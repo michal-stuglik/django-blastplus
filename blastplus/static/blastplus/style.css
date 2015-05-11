@@ -1,0 +1,35 @@
+.blastplus_header {
+	/*max-width: fill-available;*/
+	white-space: normal;
+	word-wrap: break-word;
+}
+.blastplus_test {
+	width: 100px;
+	word-break: break-all;
+	white-space: normal;
+}
+.blastplus_input_body {
+	border: 1px solid;
+	border-radius: 8px;
+	padding: 15px 15px 15px 15px;
+	margin-bottom: 30px;
+	color: inherit;
+	box-shadow: 1px 1px 1px #888888;
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+}
+.blastplus_input_seq_form {
+	border: 1px solid;
+	border-radius: 8px;
+	padding: 5px;
+	color: inherit;
+	box-shadow: 1px 1px 1px #888888;
+	border-color: #e7e7e7;
+	margin: 5px;
+	max-width:100%;
+	min-width: 100%;
+	width: 100%;
+}
+.blastplus_input_textfield_form {
+	max-width: 50px;
+}

@@ -1,0 +1,84 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> django-blastplus </title>
+
+    <!-- Bootstrap core JavaScript-->
+
+    {% block stylesheets %}
+
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'blastplus/style.css' %}" type="text/css"/>
+
+    {% endblock %}
+
+    {% block javascript %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/bootstrap.js' %}"></script>
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<table style="width:80%; margin:0 auto;" cellpadding="5px">
+    <tr>
+        <td align="center"><h2> django-blastplus form [example] </h2></td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <button type="button" id="loadSampleData" data-loading-text="Loading..." autocomplete="off">
+                    Use sample sequence
+                </button>
+
+                <script>
+                    $('#loadSampleData').on('click', function () {
+                        var $btn = $(this).button('loading');
+
+                        id_sequence_in_form.value = '{{ sequence_sample_in_fasta|escapejs }}';
+
+                        $btn.button('reset');
+                    });
+                </script>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+            <div>
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    Please correct errors: {{form.errors}}
+                </div>
+                {% endif %}
+                <form action="" method="post" size="100">
+                    {% csrf_token %}
+                    <p>{{form.sequence_in_form}}</p>
+
+                    <p>e-value {{form.evalue_in_form}}</p>
+
+                    <p>{{form.matrix_in_form.label}} {{form.matrix_in_form}}</p>
+
+                    <p>word size {{form.word_size_in_form}}</p>
+
+                    <p>sensitivity {{form.search_sensitivity_in_form}}</p>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </td>
+    </tr>
+
+
+</table>
+
+</body>
+</html>
+
+
