@@ -3,3 +3,6 @@
 .directory
 *.egg-info
 dist
+docs/build/html/objects.inv
+docs/build/html/.buildinfo
+docs/build/doctrees
