@@ -2,7 +2,7 @@
 django-blastplus
 ================
 
-django-blastplus is a simple Django app to conduct web-based homology search with blast+.
+A simple Django app to conduct web-based homology search with blast+.
 
 
 Requirements
