@@ -25,6 +25,8 @@ class BlastForm(forms.Form):
                                         initial=blast_settings.BLASTN_DEFAULT_INT_WORD_SIZE, label="word size")
     search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.NUCLEOTIDE_SEARCH_SENSITIVE_CHOICE,
                                                    label="sensitivity")
+    blast_nucl_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
+
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
@@ -47,6 +49,7 @@ class TBlastnForm(forms.Form):
     word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
                                         initial=blast_settings.TBLASTN_DEFAULT_INT_WORD_SIZE, label="word size")
     search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
+    blast_nucl_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']

@@ -7,7 +7,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # path to nucleotide blastplus database
-BLAST_DB_NUCL = os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db')
+# BLAST_DB_NUCL = os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db')
+
+# tuple of databases -  to select in form
+BLAST_DB_NUCL_CHOICE = ((os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db1/sample_db'), "Sample database 1", ),
+                        (os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db2/sample_db2'), "Sample database 2", ),)
 
 # path to example files
 EXAMPLE_FASTA_NUCL_FILE_PATH = os.path.join(BASE_DIR, 'blastplus/sampledata/sample_nucl.fasta')

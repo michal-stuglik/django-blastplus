@@ -62,13 +62,15 @@
                     {% csrf_token %}
                     <p>{{form.sequence_in_form}}</p>
 
-                    <p>e-value {{form.evalue_in_form}}</p>
+                    <p><strong>Database:</strong> {{form.blast_nucl_in_form}}</p>
+
+                    <p><strong>E-value:</strong> {{form.evalue_in_form}}</p>
 
                     <p>{{form.matrix_in_form.label}} {{form.matrix_in_form}}</p>
 
-                    <p>word size {{form.word_size_in_form}}</p>
+                    <p><strong>Word size:</strong> {{form.word_size_in_form}}</p>
 
-                    <p>sensitivity {{form.search_sensitivity_in_form}}</p>
+                    <p><strong>Sensitivity:</strong> {{form.search_sensitivity_in_form}}</p>
                     <input type="submit" value="Search">
                 </form>
             </div>
