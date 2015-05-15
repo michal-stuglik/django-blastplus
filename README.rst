@@ -69,9 +69,10 @@ Quick start
 
 3. You can modify some defaults in blastplus.settings
 
-- e.g. modify name or path to nucleotide database::
+- e.g. modify name or path to nucleotide database (now as a tuple of dbs)::
 
-    BLAST_DB_NUCL = os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db')
+    BLAST_DB_NUCL_CHOICE = ((os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db1/sample_db'), "Sample database 1", ),
+                        (os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db2/sample_db2'), "Sample database 2", ),)
 
 4. Visit search pages:
 
