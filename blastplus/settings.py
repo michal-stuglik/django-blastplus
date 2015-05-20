@@ -47,18 +47,20 @@ PROTEIN_SEARCH_SENSITIVE_CHOICE = (("{'gapopen': 11, 'gapextend': 1, 'matrix': '
                                    ("{'gapopen': 10, 'gapextend': 1, 'matrix': 'BLOSUM90'}", "NEAR MATCH", ),
                                    ("{'gapopen': 14, 'gapextend': 2, 'matrix': 'BLOSUM45'}", "DISTANT", ),)
 
-# blastn defaults and limits
-BLASTN_DEFAULT_INT_WORD_SIZE = 11
-BLASTN_MIN_INT_WORD_SIZE = 7
-BLASTN_MAX_INT_WORD_SIZE = 50
-BLASTN_WORD_SIZE_ERROR = "word size should be between {} and {}".format(BLASTN_MIN_INT_WORD_SIZE,
-                                                                        BLASTN_MAX_INT_WORD_SIZE - 1)
-# tblastn defaults and limits
-TBLASTN_DEFAULT_INT_WORD_SIZE = 3
-TBLASTN_MIN_INT_WORD_SIZE = 2
-TBLASTN_MAX_INT_WORD_SIZE = 8
-TBLASTN_WORD_SIZE_ERROR = "word size should be between {} and {}".format(TBLASTN_MIN_INT_WORD_SIZE,
-                                                                         TBLASTN_MAX_INT_WORD_SIZE - 1)
+
+class BlastLimitSet(object):
+
+    def __init__(self, default_word_size, min_word_size, max_word_size):
+        self.default_word_size = default_word_size
+        self.min_word_size = min_word_size
+        self.max_word_size = max_word_size
+
+    def get_word_size_error(self):
+        return "word size should be between {} and {}".format(self.min_word_size, self.max_word_size - 1)
+
+
+BLASTN_SETS = BlastLimitSet(default_word_size=11, min_word_size=7, max_word_size=50)
+TBLASTN_SETS = BlastLimitSet(default_word_size=3, min_word_size=3, max_word_size=8)
 
 # ERROR massages
 BLAST_CORRECT_SEQ_ERROR_MSG = "Please put correct sequence!"
