@@ -27,7 +27,6 @@ class BlastForm(forms.Form):
                                                    label="sensitivity")
     blast_nucl_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
 
-
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
 
