@@ -13,6 +13,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 BLAST_DB_NUCL_CHOICE = ((os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db1/sample_db'), "Sample database 1", ),
                         (os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db2/sample_db2'), "Sample database 2", ),)
 
+BLAST_DB_PROT_CHOICE = ((os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db3_prot/sample_db3_prot'), "Sample database 3 - proteins", ),
+                        (os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db4_prot/sample_db4_prot'), "Sample database 4 - proteins", ),)
+
 # path to example files
 EXAMPLE_FASTA_NUCL_FILE_PATH = os.path.join(BASE_DIR, 'blastplus/sampledata/sample_nucl.fasta')
 EXAMPLE_FASTA_PROT_FILE_PATH = os.path.join(BASE_DIR, 'blastplus/sampledata/sample_prot.fasta')
