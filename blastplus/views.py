@@ -1,7 +1,7 @@
 import ast
 import os
 
-from Bio.Blast.Applications import NcbiblastnCommandline, NcbitblastnCommandline
+from Bio.Blast.Applications import NcbiblastnCommandline, NcbitblastnCommandline, NcbiblastpCommandline, NcbiblastxCommandline
 from Bio.Blast import NCBIXML
 
 from django.shortcuts import render_to_response
@@ -10,7 +10,7 @@ from django.template import RequestContext
 from blastplus.settings import EVALUE_BLAST_DEFAULT, BLAST_MAX_NUMBER_SEQ_IN_INPUT
 from blastplus.settings import EXAMPLE_FASTA_NUCL_FILE_PATH, EXAMPLE_FASTA_PROT_FILE_PATH
 
-from blastplus.forms import BlastForm, TBlastnForm
+from blastplus.forms import BlastForm, TBlastnForm, BlastpForm, BlastxForm
 from blastplus import utils
 
 
@@ -28,7 +28,7 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
             query_file_object_tmp = form.cleaned_data['sequence_in_form']
             evalue = float(form.cleaned_data['evalue_in_form'])
             word_size = int(form.cleaned_data['word_size_in_form'])
-            database_path = str(form.cleaned_data['blast_nucl_in_form'])
+            database_path = str(form.cleaned_data['blast_db_in_form'])
 
             standard_opt_dic = {'query': query_file_object_tmp, 'evalue': evalue, 'outfmt': 5, 'db': database_path, 'word_size': word_size}
 
@@ -51,6 +51,7 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
 
                 blast_records__file_xml, blast_error = utils.run_blast_commands(blast_commandline, **dict(standard_opt_dic, **sensitivity_opt_dic))
 
+                # TODO: with an error, proper error info must be send (e.g 'wrong parameters set')
                 if len(blast_error) > 0:
                     return render_to_response(template_result, {"blast_record": ''}, context_instance=RequestContext(request))
 
@@ -97,4 +98,14 @@ def tblastn(request, blast_form=TBlastnForm, template_init='blastplus/blast.html
 
 def blastn(request, blast_form=BlastForm, template_init='blastplus/blast.html', template_result='blastplus/blast_results.html', extra_context=None):
     return blast(request, blast_form=blast_form, template_init=template_init, template_result=template_result, blast_commandline=NcbiblastnCommandline,
+                 sample_fasta_path=EXAMPLE_FASTA_NUCL_FILE_PATH, extra_context=extra_context)
+
+
+def blastp(request, blast_form=BlastpForm, template_init='blastplus/blast.html', template_result='blastplus/blast_results.html', extra_context=None):
+    return blast(request, blast_form=blast_form, template_init=template_init, template_result=template_result, blast_commandline=NcbiblastpCommandline,
+                 sample_fasta_path=EXAMPLE_FASTA_PROT_FILE_PATH, extra_context=extra_context)
+
+
+def blastx(request, blast_form=BlastxForm, template_init='blastplus/blast.html', template_result='blastplus/blast_results.html', extra_context=None):
+    return blast(request, blast_form=blast_form, template_init=template_init, template_result=template_result, blast_commandline=NcbiblastxCommandline,
                  sample_fasta_path=EXAMPLE_FASTA_NUCL_FILE_PATH, extra_context=extra_context)

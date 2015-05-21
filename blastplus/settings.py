@@ -61,6 +61,9 @@ class BlastLimitSet(object):
 
 BLASTN_SETS = BlastLimitSet(default_word_size=11, min_word_size=7, max_word_size=50)
 TBLASTN_SETS = BlastLimitSet(default_word_size=3, min_word_size=3, max_word_size=8)
+BLASTP_SETS = BlastLimitSet(default_word_size=3, min_word_size=2, max_word_size=7)
+BLASTX_SETS = BlastLimitSet(default_word_size=3, min_word_size=2, max_word_size=7)
+
 
 # ERROR massages
 BLAST_CORRECT_SEQ_ERROR_MSG = "Please put correct sequence!"

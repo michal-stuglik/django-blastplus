@@ -17,7 +17,7 @@ ALLOWED_AMINOACIDS = set(IUPACProtein.letters)
 
 
 class BlastForm(forms.Form):
-    """Form used for blast+ search following validation input sequence.  """
+    """Form used for blastn search following validation input sequence.  """
 
     sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
     evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
@@ -25,7 +25,7 @@ class BlastForm(forms.Form):
                                         initial=blast_settings.BLASTN_SETS.default_word_size, label="word size")
     search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.NUCLEOTIDE_SEARCH_SENSITIVE_CHOICE,
                                                    label="sensitivity")
-    blast_nucl_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
@@ -35,20 +35,19 @@ class BlastForm(forms.Form):
     def clean_word_size_in_form(self):
         word_size_in_form = self.cleaned_data['word_size_in_form']
 
-        return validate_word_size(word_size_in_form, blast_settings.BLASTN_SETS.min_word_size, blast_settings.BLASTN_SETS.max_word_size,
-                                  blast_settings.BLASTN_SETS.get_word_size_error())
+        return validate_word_size(word_size_in_form, blast_settings.BLASTN_SETS)
 
 
 class TBlastnForm(forms.Form):
-    """Form used for blast+ search following validation input sequence.  """
+    """Form used for tblastn search following validation input sequence.  """
 
     sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
     evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
-    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT,                                       label="matrix")
+    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT, label="matrix")
     word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
                                         initial=blast_settings.TBLASTN_SETS.default_word_size, label="word size")
     search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
-    blast_nucl_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
@@ -56,14 +55,55 @@ class TBlastnForm(forms.Form):
 
     def clean_word_size_in_form(self):
         word_size_in_form = self.cleaned_data['word_size_in_form']
-        return validate_word_size(word_size_in_form, blast_settings.TBLASTN_SETS.min_word_size, blast_settings.TBLASTN_SETS.max_word_size,
-                                  blast_settings.TBLASTN_SETS.get_word_size_error())
+        return validate_word_size(word_size_in_form, blast_settings.TBLASTN_SETS)
 
 
-def validate_word_size(word_size, blast_min_int_word_size, blast_max_int_word_size, blast_word_size_error):
+class BlastpForm(forms.Form):
+    """Form used for blastp search following validation input sequence.  """
+
+    sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
+    evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
+    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT, label="matrix")
+    word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
+                                        initial=blast_settings.BLASTP_SETS.default_word_size, label="word size")
+    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_PROT_CHOICE, label="Database")
+
+    def clean_sequence_in_form(self):
+        sequence_in_form = self.cleaned_data['sequence_in_form']
+        return validate_sequence(sequence_in_form, sequence_is_as_nucleotide=False)
+
+    def clean_word_size_in_form(self):
+        word_size_in_form = self.cleaned_data['word_size_in_form']
+        return validate_word_size(word_size_in_form, blast_settings.BLASTP_SETS)
+
+
+class BlastxForm(forms.Form):
+    """Form used for blastx search following validation input sequence.  """
+
+    sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
+    evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
+    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT, label="matrix")
+    word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
+                                        initial=blast_settings.BLASTX_SETS.default_word_size, label="word size")
+    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_PROT_CHOICE, label="Database")
+
+    def clean_sequence_in_form(self):
+        sequence_in_form = self.cleaned_data['sequence_in_form']
+        return validate_sequence(sequence_in_form, sequence_is_as_nucleotide=True)
+
+    def clean_word_size_in_form(self):
+        word_size_in_form = self.cleaned_data['word_size_in_form']
+        return validate_word_size(word_size_in_form, blast_settings.BLASTX_SETS)
+
+
+def validate_word_size(word_size, BLAST_SETS):
     """Validate word size in blast/tblastn form.  """
 
-    # int_word_size = 0
+    blast_min_int_word_size = BLAST_SETS.min_word_size
+    blast_max_int_word_size = BLAST_SETS.max_word_size
+    blast_word_size_error = BLAST_SETS.get_word_size_error()
 
     try:
         if len(word_size) <= 0:

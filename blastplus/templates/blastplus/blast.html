@@ -61,7 +61,7 @@
                 <form action="" method="post" size="100">
                     {% csrf_token %}
                     <p>{{form.sequence_in_form}}</p>
-                    <p><strong>Database:</strong> {{form.blast_nucl_in_form}}</p>
+                    <p><strong>Database:</strong> {{form.blast_db_in_form}}</p>
                     <p><strong>E-value:</strong> {{form.evalue_in_form}}</p>
                     {% if form.matrix_in_form %}
                         <p><strong>Matrix:</strong> {{form.matrix_in_form}}</p>
