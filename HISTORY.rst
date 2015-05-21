@@ -3,6 +3,12 @@
 History
 =======
 
+0.3
+====
+
+* use of multiple (nucleotide) databases
+
+
 0.2
 =====
 
