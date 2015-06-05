@@ -26,11 +26,8 @@ Requirements
 Download
 --------
 
-.. image:: https://pypip.in/v/django-blastplus/badge.png
-    :target: https://pypi.python.org/pypi/django-blastplus
-
-.. image:: https://pypip.in/d/django-blastplus/badge.png
-    :target: https://pypi.python.org/pypi/django-blastplus
+.. image:: https://badge.fury.io/py/django-blastplus.svg
+    :target: http://badge.fury.io/py/django-blastplus
 
 
 Get the latest version of django-blastplus from
