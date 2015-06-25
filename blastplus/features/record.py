@@ -6,7 +6,7 @@ Module with biopython-like classes to keep & process results from blast analysis
 class Hsp(object):
     """Store and process HSP object from blast local search.  """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         self.limit_length = 80
 
         self.align_length = kwargs['align_length']
