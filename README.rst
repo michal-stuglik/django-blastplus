@@ -26,6 +26,10 @@ Requirements
 Download
 --------
 
+.. image:: https://landscape.io/github/michal-stuglik/django-blastplus/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/michal-stuglik/django-blastplus/master
+   :alt: Code Health
+   
 .. image:: https://badge.fury.io/py/django-blastplus.svg
     :target: http://badge.fury.io/py/django-blastplus
 
