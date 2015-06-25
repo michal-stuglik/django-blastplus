@@ -31,7 +31,12 @@
 
 <!--<div class="row" >-->
 <div class='blastplus_input_body' style="width:90%; margin:0 auto;" >
-    {% if blast_records and blast_records.0.alignments|length == 0 %}
+
+    {% if blast_error %}
+    <h4>
+        <div class="alert alert-warning text-center" role="alert"> {{ blast_error }}</div>
+    </h4>
+    {% elif blast_records and blast_records.0.alignments|length == 0 %}
     <h4>
         <div class="alert alert-warning text-center" role="alert"> Sorry, No blast matches found for your sequence</div>
     </h4>

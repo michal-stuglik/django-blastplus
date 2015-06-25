@@ -9,6 +9,7 @@ from django.template import RequestContext
 
 from blastplus.settings import EVALUE_BLAST_DEFAULT, BLAST_MAX_NUMBER_SEQ_IN_INPUT
 from blastplus.settings import EXAMPLE_FASTA_NUCL_FILE_PATH, EXAMPLE_FASTA_PROT_FILE_PATH
+from blastplus.settings import BLAST_CORRECT_PARAMS
 
 from blastplus.forms import BlastForm, TBlastnForm, BlastpForm, BlastxForm
 from blastplus import utils
@@ -41,27 +42,26 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
 
             sensitivity_opt_dic = ast.literal_eval(str(form.cleaned_data['search_sensitivity_in_form']))
 
-            # standard_opt_dic = {'query': query_file_object_tmp, 'evalue': evalue, 'outfmt': 5, 'db': blastplus_db, "matrix": matrix, 'word_size': word_size}
-
             blast_records__file_xml = None
             try:
+
                 # blast search, parse results from temp file, put them into template for rendering.
+                blast_records__file_xml, blast_error = utils.run_blast_commands(blast_commandline,
+                                                                                **dict(standard_opt_dic,
+                                                                                       **sensitivity_opt_dic))
 
-                blast_records__file_xml, blast_error = utils.run_blast_commands(blast_commandline, **dict(standard_opt_dic, **sensitivity_opt_dic))
-
-                # TODO: with an error, proper error info must be send (e.g 'wrong parameters set')
                 if len(blast_error) > 0:
-                    return render_to_response(template_result, {"blast_record": ''}, context_instance=RequestContext(request))
+                    return render_to_response(template_result, {"blast_record": '', blast_error: BLAST_CORRECT_PARAMS },
+                                              context_instance=RequestContext(request))
 
                 else:
-                    blast_records = NCBIXML.parse(blast_records__file_xml)
 
                     # converts blast results into objects and pack into list
-                    blast_records_in_object_and_list = utils.blast_records_to_object(list(blast_records))
+                    blast_records_in_object_and_list = utils.blast_records_to_object(
+                        list(NCBIXML.parse(blast_records__file_xml)))
 
                     # user defined function to modify blast results
                     # e.g. join blast results with external database in template
-
                     if extra_context is not None:
                         blast_records_in_object_and_list = extra_context(blast_records_in_object_and_list)
 

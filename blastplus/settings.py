@@ -69,3 +69,4 @@ BLASTX_SETS = BlastLimitSet(default_word_size=3, min_word_size=2, max_word_size=
 BLAST_CORRECT_SEQ_ERROR_MSG = "Please put correct sequence!"
 BLAST_CORRECT_SEQ_MAX_SEQ_NUMB_ERROR_MSG = "Too many sequences, maximum is {}".format(BLAST_MAX_NUMBER_SEQ_IN_INPUT)
 BLAST_CORRECT_SEQ_TOO_SHORT_ERROR_MSG = "Too short sequence!"
+BLAST_CORRECT_PARAMS = "Sorry, incorrect parameter combination"
