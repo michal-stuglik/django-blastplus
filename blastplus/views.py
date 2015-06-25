@@ -45,9 +45,7 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
 
             blast_records__file_xml = None
             try:
-                """
-                blast search, parse results from temp file, put them into template for rendering.
-                """
+                # blast search, parse results from temp file, put them into template for rendering.
 
                 blast_records__file_xml, blast_error = utils.run_blast_commands(blast_commandline, **dict(standard_opt_dic, **sensitivity_opt_dic))
 
@@ -61,16 +59,11 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
                     # converts blast results into objects and pack into list
                     blast_records_in_object_and_list = utils.blast_records_to_object(list(blast_records))
 
-                    try:
-                        '''
-                        user defined function to modify blast results
-                        e.g. join blast results with external database in template
+                    # user defined function to modify blast results
+                    # e.g. join blast results with external database in template
 
-                        '''
-                        if extra_context is not None:
-                            blast_records_in_object_and_list = extra_context(blast_records_in_object_and_list)
-                    except:
-                        pass
+                    if extra_context is not None:
+                        blast_records_in_object_and_list = extra_context(blast_records_in_object_and_list)
 
                     return render_to_response(template_result,
                                               {'application': blast_records_in_object_and_list[0].application,
