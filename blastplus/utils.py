@@ -89,6 +89,7 @@ def run_blast_commands(ncbicommandline_method, **keywords):
         error_string = "Runtime error: " + stderr + "\n" + e.cmd
 
     # remove query temp file
-    os.remove(query_file_object_tmp.name)
+    os.unlink(query_file_object_tmp.name)
+    # os.remove(query_file_object_tmp.name)
 
     return blast_out_tmp, error_string
