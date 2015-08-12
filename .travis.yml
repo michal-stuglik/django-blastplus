@@ -1,0 +1,14 @@
+language: python
+python:
+  - "2.7"
+#env:
+#  - DJANGO=1.8 DB=sqlite
+
+# command to install dependencies
+install:
+  - pip install .
+  - pip install -r requirements.txt
+# command to run tests
+script: 
+  - python manage.py test
+# nosetests
