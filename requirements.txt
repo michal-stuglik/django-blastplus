@@ -1,0 +1,8 @@
+django >= 1.7
+biopython
+
+# testing apps
+nose
+django-nose
+coverage
+django-webtest

@@ -10,7 +10,7 @@ Requirements
 
 1. Blast+
 2. Python 2.7
-3. Django 1.6-1.8
+3. Django 1.7-1.8
 
 ::
 
