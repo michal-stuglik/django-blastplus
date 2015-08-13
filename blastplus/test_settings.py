@@ -11,6 +11,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_nose',
     'coverage',
+    'blastplus',
 ]
 
 MIDDLEWARE_CLASSES = (

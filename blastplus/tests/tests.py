@@ -5,6 +5,7 @@ import os
 from blastplus import utils
 from blastplus.settings import SAMPLE_DIR
 from Bio.Blast import NCBIXML
+from blastplus.features import record
 
 
 class UtilsTestCase(TestCase):
@@ -28,3 +29,18 @@ class UtilsTestCase(TestCase):
         brs = utils.blast_records_to_object(list(NCBIXML.parse(open(self.blast_out))))
         self.assertTrue(len(brs) == 1)
 
+
+class FeatureRecordTestCase(TestCase):
+    def setUp(self):
+        self.hsp = record.Hsp(
+            **dict(sbjct_end=203, sbjct=u'TTTGGAGCCTGAGCAGGAA', bits=35.5503, frame=(1, -1),
+                   query_end=19, score=38.0, gaps=0, expect=0.0122843, str='Score 38 (35 bits), expectation 1.2e-02',
+                   positives=19, sbjct_start=221, query=u'TTTGGAGCCTGAGCAGGAA',
+                   align_length=19, num_alignments=None, identities=19,
+                   query_start=1, strand=(None, None), match=u'|||||||||||||||||||'))
+
+    def tearDown(self):
+        del self.hsp
+
+    def test_hsp(self):
+        self.assertIsInstance(self.hsp, record.Hsp)
