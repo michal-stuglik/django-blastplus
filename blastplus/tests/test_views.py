@@ -16,9 +16,15 @@ class BlastTestCase(TestCase):
 class BlastnCase(WebTest):
 
     def test_blastn_initials(self):
+
         form = self.app.get('/blastn/').form
         self.assertEqual(form['blast_db_in_form'].value, settings.BLAST_DB_NUCL_CHOICE[0][0])
         self.assertEqual(form['search_sensitivity_in_form'].value, settings.NUCLEOTIDE_SEARCH_SENSITIVE_CHOICE[0][0])
         self.assertEqual(form['word_size_in_form'].value, u'%s' % settings.BLASTN_SETS.default_word_size)
         self.assertEqual(form['evalue_in_form'].value, u'%s' % settings.EVALUE_BLAST_DEFAULT)
         self.assertEqual(form['sequence_in_form'].value, u'')
+
+    # TODO: more post stuff
+    def test_blastn_behaves(self):
+        req = self.app.post('/blastn/')
+        self.assertIsNotNone(req)

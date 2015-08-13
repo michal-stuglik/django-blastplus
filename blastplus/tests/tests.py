@@ -26,6 +26,5 @@ class UtilsTestCase(TestCase):
 
     def test_blast_records_to_object(self):
         brs = utils.blast_records_to_object(list(NCBIXML.parse(open(self.blast_out))))
-        self.assertTrue(len(brs) > 0)
+        self.assertTrue(len(brs) == 1)
 
-        # TODO: more tests on blast__record
