@@ -36,6 +36,10 @@ Download
 .. image:: https://travis-ci.org/michal-stuglik/django-blastplus.svg?branch=master
     :target: https://travis-ci.org/michal-stuglik/django-blastplus
     :alt: Travis CI
+    
+.. image:: https://codeclimate.com/github/michal-stuglik/django-blastplus/badges/gpa.svg
+   :target: https://codeclimate.com/github/michal-stuglik/django-blastplus
+   :alt: Code Climate
 
 Get the latest version of django-blastplus from
 https://pypi.python.org/pypi/django-blastplus/
