@@ -1,18 +1,15 @@
 import ast
 import os
 
-from Bio.Blast.Applications import NcbiblastnCommandline, NcbitblastnCommandline, NcbiblastpCommandline, NcbiblastxCommandline
 from Bio.Blast import NCBIXML
+from Bio.Blast.Applications import NcbiblastnCommandline, NcbitblastnCommandline, NcbiblastpCommandline, NcbiblastxCommandline
+from django.shortcuts import render
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-
+from blastplus import utils
+from blastplus.forms import BlastForm, TBlastnForm, BlastpForm, BlastxForm
+from blastplus.settings import BLAST_CORRECT_PARAMS
 from blastplus.settings import EVALUE_BLAST_DEFAULT, BLAST_MAX_NUMBER_SEQ_IN_INPUT
 from blastplus.settings import EXAMPLE_FASTA_NUCL_FILE_PATH, EXAMPLE_FASTA_PROT_FILE_PATH
-from blastplus.settings import BLAST_CORRECT_PARAMS
-
-from blastplus.forms import BlastForm, TBlastnForm, BlastpForm, BlastxForm
-from blastplus import utils
 
 
 def blast(request, blast_form, template_init, template_result, blast_commandline, sample_fasta_path, extra_context=None):
@@ -51,8 +48,7 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
                                                                                        **sensitivity_opt_dic))
 
                 if len(blast_error) > 0:
-                    return render_to_response(template_result, {"blast_record": '', blast_error: BLAST_CORRECT_PARAMS },
-                                              context_instance=RequestContext(request))
+                    return render(request=request, template_name=template_result, context={"blast_record": '', blast_error: BLAST_CORRECT_PARAMS})
 
                 else:
 
@@ -65,11 +61,9 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
                     if extra_context is not None:
                         blast_records_in_object_and_list = extra_context(blast_records_in_object_and_list)
 
-                    return render_to_response(template_result,
-                                              {'application': blast_records_in_object_and_list[0].application,
-                                               'version': blast_records_in_object_and_list[0].version,
-                                               'blast_records': blast_records_in_object_and_list, },
-                                              context_instance=RequestContext(request))
+                    return render(request=request, template_name=template_result, context={'application': blast_records_in_object_and_list[0].application,
+                                                                                           'version': blast_records_in_object_and_list[0].version,
+                                                                                           'blast_records': blast_records_in_object_and_list, })
 
             finally:
                 # remove result - temporary file
@@ -79,9 +73,8 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
     else:
         form = blast_form(initial={'sequence_in_form': '', 'evalue_in_form': EVALUE_BLAST_DEFAULT})
 
-    return render_to_response(template_init, {'form': form, 'sequence_sample_in_fasta': utils.get_sample_data(sample_fasta_path),
-                                              "blast_max_number_seq_in_input": BLAST_MAX_NUMBER_SEQ_IN_INPUT,
-                                              }, context_instance=RequestContext(request))
+    return render(request=request, template_name=template_init, context={'form': form, 'sequence_sample_in_fasta': utils.get_sample_data(sample_fasta_path),
+                                                                         "blast_max_number_seq_in_input": BLAST_MAX_NUMBER_SEQ_IN_INPUT, })
 
 
 def tblastn(request, blast_form=TBlastnForm, template_init='blastplus/blast.html', template_result='blastplus/blast_results.html', extra_context=None):

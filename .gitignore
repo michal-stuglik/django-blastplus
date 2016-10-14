@@ -8,3 +8,6 @@ docs/build/html/.buildinfo
 docs/build/doctrees
 .coverage
 htmlcov
+.idea/
+/.venv/
+/build/

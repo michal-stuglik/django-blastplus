@@ -1,13 +1,12 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from blastplus import views
 
-urlpatterns = patterns('',
+urlpatterns = [
+    url(r'^blastn/', views.blastn),
+    url(r'^tblastn/', views.tblastn),
+    url(r'^blast/$', views.blastn),
+    url(r'^blastp/$', views.blastp),
+    url(r'^blastx/$', views.blastx),
 
-                       url(r'^blastn/', views.blastn),
-                       url(r'^tblastn/', views.tblastn),
-                       url(r'^blast/$', views.blastn),
-                       url(r'^blastp/$', views.blastp),
-                       url(r'^blastx/$', views.blastx),
-
-                       )
+]

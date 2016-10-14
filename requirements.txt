@@ -1,4 +1,4 @@
-django >= 1.7
+django >= 1.10
 biopython
 
 # testing apps
