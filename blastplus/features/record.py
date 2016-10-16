@@ -1,6 +1,9 @@
 """
 Module with biopython-like classes to keep & process results from blast analysis.
 """
+import tempfile
+from django.core.cache import cache
+import uuid
 
 
 class Hsp(object):
@@ -44,6 +47,51 @@ class Hsp(object):
     def chop_sbjct(self):
         """Subject sequence is divided on smaller non-overlapping sequences with set length.  """
         return self.chop_sequence(self.sbjct, self.limit_length)
+
+    def get_tabular_str(self):
+        """Creates table-like string from fields. """
+        hsp_string = ""
+
+        try:
+            hsp_list = [
+                {"length": self.align_length},
+                {"e-value": self.expect},
+                {"score": self.score},
+                {"identities": self.identities},
+                {"positives": self.positives},
+                {"bits": self.bits},
+                {"query start": self.query_start},
+                {"query end": self.query_end},
+                {"subject start": self.sbjct_start},
+                {"subject end": self.sbjct_end},
+            ]
+
+            for h in hsp_list:
+                for k, v in h.iteritems():
+                    hsp_string += "{}\t{}\n".format(k, v)
+        except:
+            pass
+
+        return hsp_string
+
+    def get_hsp_key_from_cache(self):
+        return self.get_set_key("hsp_", self.get_tabular_str())
+
+    def get_query_key_from_cache(self):
+        return self.get_set_key("query_", self.query)
+
+    def get_subject_key_from_cache(self):
+        return self.get_set_key("subject_", self.sbjct)
+
+    def get_set_key(self, prefix, value_to_set):
+        key = ""
+        while True:
+            key = prefix + str(uuid.uuid4().get_hex().upper())
+            if cache.has_key(key):
+                continue
+            cache.set(key, value_to_set)
+            break
+        return key
 
 
 class Alignment(object):
