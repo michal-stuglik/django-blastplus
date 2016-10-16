@@ -1,9 +1,9 @@
 """
 Module with biopython-like classes to keep & process results from blast analysis.
 """
-import tempfile
-from django.core.cache import cache
 import uuid
+
+from django.core.cache import cache
 
 
 class Hsp(object):

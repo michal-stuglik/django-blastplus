@@ -61,6 +61,7 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
                     if extra_context is not None:
                         blast_records_in_object_and_list = extra_context(blast_records_in_object_and_list)
 
+
                     return render(request=request, template_name=template_result, context={'application': blast_records_in_object_and_list[0].application,
                                                                                            'version': blast_records_in_object_and_list[0].version,
                                                                                            'blast_records': blast_records_in_object_and_list, })

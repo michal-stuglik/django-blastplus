@@ -34,7 +34,6 @@ class BlastForm(forms.Form):
 
     def clean_word_size_in_form(self):
         word_size_in_form = self.cleaned_data['word_size_in_form']
-
         return validate_word_size(word_size_in_form, blast_settings.BLASTN_SETS)
 
 
