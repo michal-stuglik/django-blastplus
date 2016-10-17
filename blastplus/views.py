@@ -10,6 +10,7 @@ from blastplus.forms import BlastForm, TBlastnForm, BlastpForm, BlastxForm
 from blastplus.settings import BLAST_CORRECT_PARAMS
 from blastplus.settings import EVALUE_BLAST_DEFAULT, BLAST_MAX_NUMBER_SEQ_IN_INPUT
 from blastplus.settings import EXAMPLE_FASTA_NUCL_FILE_PATH, EXAMPLE_FASTA_PROT_FILE_PATH
+from blastplus.settings import BLAST_DB_NUCL_LIST
 
 
 def blast(request, blast_form, template_init, template_result, blast_commandline, sample_fasta_path, extra_context=None):
@@ -29,6 +30,7 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
             database_path = str(form.cleaned_data['blast_db_in_form'])
 
             standard_opt_dic = {'query': query_file_object_tmp, 'evalue': evalue, 'outfmt': 5, 'db': database_path, 'word_size': word_size}
+            annotated = utils.get_annotation(database_path, BLAST_DB_NUCL_LIST)
 
             # none standard options:
             try:
@@ -61,10 +63,10 @@ def blast(request, blast_form, template_init, template_result, blast_commandline
                     if extra_context is not None:
                         blast_records_in_object_and_list = extra_context(blast_records_in_object_and_list)
 
-
                     return render(request=request, template_name=template_result, context={'application': blast_records_in_object_and_list[0].application,
                                                                                            'version': blast_records_in_object_and_list[0].version,
-                                                                                           'blast_records': blast_records_in_object_and_list, })
+                                                                                           'blast_records': blast_records_in_object_and_list,
+                                                                                           'annotated': annotated })
 
             finally:
                 # remove result - temporary file

@@ -93,3 +93,15 @@ def run_blast_commands(ncbicommandline_method, **keywords):
     # os.remove(query_file_object_tmp.name)
 
     return blast_out_tmp, error_string
+
+
+def get_annotation(db_path, db_list):
+    """ Checks if database is set as annotated. """
+
+    annotated = False
+    for db in db_list:
+        if db["path"] == db_path:
+            annotated = db["annotated"]
+            break
+
+    return annotated
