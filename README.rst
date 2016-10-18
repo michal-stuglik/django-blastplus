@@ -79,18 +79,20 @@ Quick start
 
 - e.g. modify path to nucleotide database::
 
-BLAST_DB_NUCL_LIST = [
-    {
-        "name": "sample1",
-        "path": 'blastplus/sampledata/sample_db1/sample_db',
-        "desc": "Sample database 1",
-        "annotated": False, },
-    {
-        "name": "sample2",
-        "path": 'blastplus/sampledata/sample_db2/sample_db2',
-        "desc": "Sample database 2",
-        "annotated": False, },
-]
+::
+
+    BLAST_DB_NUCL_LIST = [
+        {
+            "name": "sample1",
+            "path": 'blastplus/sampledata/sample_db1/sample_db',
+            "desc": "Sample database 1",
+            "annotated": False, },
+        {
+            "name": "sample2",
+            "path": 'blastplus/sampledata/sample_db2/sample_db2',
+            "desc": "Sample database 2",
+            "annotated": False, },
+    ]
 
 4. Visit search pages:
 
