@@ -64,8 +64,10 @@ EVALUE_BLAST_DEFAULT = 0.001
 
 # parameters for sensitive nucleotide search
 NUCLEOTIDE_SEARCH_SENSITIVE_CHOICE = (("{'gapopen': 5, 'gapextend': 2, 'penalty': -3, 'reward': 2}", "NORMAL",),
-                                      ("{'penalty': -3, 'word_size': 15,'gapopen': 5, 'gapextend': 2,  'reward': 1, }", "NEAR MATCH",),
-                                      ("{'penalty': -1, 'word_size': 9,'gapopen': 2, 'gapextend': 1,  'reward': 1, }", "DISTANT",),)
+                                      ("{'penalty': -3, 'word_size': 15,'gapopen': 5, 'gapextend': 2,  'reward': 1, }",
+                                       "NEAR MATCH",),
+                                      ("{'penalty': -1, 'word_size': 9,'gapopen': 2, 'gapextend': 1,  'reward': 1, }",
+                                       "DISTANT",),)
 
 # parameters for sensitive peptide search
 PROTEIN_SEARCH_SENSITIVE_CHOICE = (("{'gapopen': 11, 'gapextend': 1, 'matrix': 'BLOSUM62'}", "NORMAL",),

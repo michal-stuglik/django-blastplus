@@ -10,7 +10,7 @@ Requirements
 
 1. Blast+
 2. Python 2.7
-3. Django 1.7-1.8
+3. Django 1.10
 
 ::
 
@@ -77,16 +77,20 @@ Quick start
 
 3. You can modify some defaults in blastplus.settings
 
-- e.g. modify path to nucleotide database (now as a tuple of dbs)::
+- e.g. modify path to nucleotide database::
 
-    BLAST_DB_NUCL_CHOICE = ((os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db1/sample_db'), "Sample database 1", ),
-                        (os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db2/sample_db2'), "Sample database 2", ),)
-
-
-- e.g. modify path to protein databases::
-
-    BLAST_DB_PROT_CHOICE = ((os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db3_prot/sample_db3_prot'), "Sample database 3 - proteins", ),
-                        (os.path.join(BASE_DIR, 'blastplus/sampledata/sample_db4_prot/sample_db4_prot'), "Sample database 4 - proteins", ),)
+BLAST_DB_NUCL_LIST = [
+    {
+        "name": "sample1",
+        "path": 'blastplus/sampledata/sample_db1/sample_db',
+        "desc": "Sample database 1",
+        "annotated": False, },
+    {
+        "name": "sample2",
+        "path": 'blastplus/sampledata/sample_db2/sample_db2',
+        "desc": "Sample database 2",
+        "annotated": False, },
+]
 
 4. Visit search pages:
 

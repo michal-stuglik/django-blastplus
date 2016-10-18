@@ -23,9 +23,11 @@ class BlastForm(forms.Form):
     evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
     word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
                                         initial=blast_settings.BLASTN_SETS.default_word_size, label="word size")
-    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.NUCLEOTIDE_SEARCH_SENSITIVE_CHOICE,
+    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select,
+                                                   choices=blast_settings.NUCLEOTIDE_SEARCH_SENSITIVE_CHOICE,
                                                    label="sensitivity")
-    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE,
+                                         label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
@@ -42,11 +44,15 @@ class TBlastnForm(forms.Form):
 
     sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
     evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
-    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT, label="matrix")
+    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST,
+                                       initial=blast_settings.MATRIX_DEFAULT, label="matrix")
     word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
                                         initial=blast_settings.TBLASTN_SETS.default_word_size, label="word size")
-    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
-    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE, label="Database")
+    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select,
+                                                   choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE,
+                                                   label="sensitivity")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_NUCL_CHOICE,
+                                         label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
@@ -62,11 +68,15 @@ class BlastpForm(forms.Form):
 
     sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
     evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
-    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT, label="matrix")
+    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST,
+                                       initial=blast_settings.MATRIX_DEFAULT, label="matrix")
     word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
                                         initial=blast_settings.BLASTP_SETS.default_word_size, label="word size")
-    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
-    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_PROT_CHOICE, label="Database")
+    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select,
+                                                   choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE,
+                                                   label="sensitivity")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_PROT_CHOICE,
+                                         label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']
@@ -82,11 +92,15 @@ class BlastxForm(forms.Form):
 
     sequence_in_form = forms.CharField(widget=forms.Textarea(blast_settings.BLAST_FORM_ATTRS), label="sequence")
     evalue_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.EVALUE_CHOICE_LIST, label="e-value")
-    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST, initial=blast_settings.MATRIX_DEFAULT, label="matrix")
+    matrix_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.MATRIX_CHOICE_LIST,
+                                       initial=blast_settings.MATRIX_DEFAULT, label="matrix")
     word_size_in_form = forms.CharField(widget=forms.TextInput(blast_settings.BLAST_FORM_INPUTTEXT_ATTRS),
                                         initial=blast_settings.BLASTX_SETS.default_word_size, label="word size")
-    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE, label="sensitivity")
-    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_PROT_CHOICE, label="Database")
+    search_sensitivity_in_form = forms.ChoiceField(widget=forms.Select,
+                                                   choices=blast_settings.PROTEIN_SEARCH_SENSITIVE_CHOICE,
+                                                   label="sensitivity")
+    blast_db_in_form = forms.ChoiceField(widget=forms.Select, choices=blast_settings.BLAST_DB_PROT_CHOICE,
+                                         label="Database")
 
     def clean_sequence_in_form(self):
         sequence_in_form = self.cleaned_data['sequence_in_form']

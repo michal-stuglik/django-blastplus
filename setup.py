@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-blastplus',
-    version='0.3.2',
+    version='0.4.0',
     packages=['blastplus'],
     include_package_data=True,
     license='MIT License',
@@ -20,9 +20,7 @@ setup(
     author_email='stuglik@gmail.com',
     classifiers=[
         'Environment :: Web Environment',
-        'Framework :: Django :: 1.6',
-        'Framework :: Django :: 1.7',
-        'Framework :: Django :: 1.8',
+        'Framework :: Django :: 1.10',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',

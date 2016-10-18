@@ -3,6 +3,14 @@
 History
 =======
 
+
+0.4
+====
+
+* upgrade to Django 1.10
+* Blast database contains more descriptive info, including "annotated"
+
+
 0.3
 ====
 
