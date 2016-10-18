@@ -20,7 +20,7 @@ setup(
     author_email='stuglik@gmail.com',
     classifiers=[
         'Environment :: Web Environment',
-        'Framework :: Django :: 1.10',
+        'Framework :: Django',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',

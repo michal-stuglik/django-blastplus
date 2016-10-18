@@ -9,3 +9,5 @@ include requirements.txt
 recursive-include blastplus *
 recursive-include docs/build/html *
 recursive-include docs/source *
+
+exclude build.sh
