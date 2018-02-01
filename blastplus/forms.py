@@ -2,13 +2,12 @@
 Module with forms to blastplus search and validation functions.
 """
 
-from django import forms
-
 import tempfile
 
 from Bio import SeqIO
 from Bio.Alphabet.IUPAC import IUPACAmbiguousDNA
 from Bio.Alphabet.IUPAC import IUPACProtein
+from django import forms
 
 from blastplus import settings as blast_settings
 

@@ -9,9 +9,9 @@ from django.shortcuts import render
 from blastplus import utils
 from blastplus.forms import BlastForm, TBlastnForm, BlastpForm, BlastxForm
 from blastplus.settings import BLAST_CORRECT_PARAMS
+from blastplus.settings import BLAST_DB_NUCL_LIST
 from blastplus.settings import EVALUE_BLAST_DEFAULT, BLAST_MAX_NUMBER_SEQ_IN_INPUT
 from blastplus.settings import EXAMPLE_FASTA_NUCL_FILE_PATH, EXAMPLE_FASTA_PROT_FILE_PATH
-from blastplus.settings import BLAST_DB_NUCL_LIST
 
 
 def blast(request, blast_form, template_init, template_result, blast_commandline, sample_fasta_path,

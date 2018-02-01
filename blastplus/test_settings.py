@@ -1,4 +1,4 @@
-from settings import *
+from blastplus.settings import *
 
 DATABASES = {
     'default': {

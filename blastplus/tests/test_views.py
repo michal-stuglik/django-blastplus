@@ -1,6 +1,7 @@
 from django.test import TestCase
-from blastplus import settings
 from django_webtest import WebTest
+
+from blastplus import settings
 
 
 class BlastTestCase(TestCase):

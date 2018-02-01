@@ -1,7 +1,8 @@
 """Module with utility functions for blastplus app.   """
 
-import tempfile
 import os
+import tempfile
+
 from Bio.Application import ApplicationError
 
 from blastplus.features.record import Alignment, BlastRecord, Hsp

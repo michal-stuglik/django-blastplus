@@ -1,11 +1,12 @@
+import os
+import tempfile
+
+from Bio.Blast import NCBIXML
 from django.test import TestCase
 
-import tempfile
-import os
 from blastplus import utils
-from blastplus.settings import SAMPLE_DIR
-from Bio.Blast import NCBIXML
 from blastplus.features import record
+from blastplus.settings import SAMPLE_DIR
 
 
 class UtilsTestCase(TestCase):

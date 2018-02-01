@@ -10,15 +10,15 @@
 
     {% block stylesheets %}
 
-    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'blastplus/style.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'blastplus/style.css' %}" type="text/css"/>
 
     {% endblock %}
 
     {% block javascript %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{% static 'bootstrap/bootstrap.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="{% static 'bootstrap/bootstrap.js' %}"></script>
 
     {% endblock %}
 
@@ -30,145 +30,145 @@
 <h2 style="text-align: center"> django-blastplus results [example] </h2>
 
 <!--<div class="row" >-->
-<div class='blastplus_input_body' style="width:90%; margin:0 auto;" >
+<div class='blastplus_input_body' style="width:90%; margin:0 auto;">
 
     {% if blast_error %}
-    <h4>
-        <div class="alert alert-warning text-center" role="alert"> {{ blast_error }}</div>
-    </h4>
+        <h4>
+            <div class="alert alert-warning text-center" role="alert"> {{ blast_error }}</div>
+        </h4>
     {% elif blast_records and blast_records.0.alignments|length == 0 %}
-    <h4>
-        <div class="alert alert-warning text-center" role="alert"> Sorry, No blast matches found for your sequence</div>
-    </h4>
+        <h4>
+            <div class="alert alert-warning text-center" role="alert"> Sorry, No blast matches found for your sequence</div>
+        </h4>
     {% else %}
-    <div>
-        <h4><b><u> {{ application }} {{ version }} </u></b></h4>
-    </div>
-
-    <br>
-    <h4><b>Description</b></h4>
-
-
-    <div class="nbsite_boxstyle">
-        <table class="table table-hover table-condensed">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>contig</th>
-                <th>query</th>
-                <th>length</th>
-                <th>e-value</th>
-                <th>score</th>
-                <th>ident %</th>
-                <!--<th>gene name / protein name</th>-->
-
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for br in blast_records %}
-            {% for alignment in br.alignments %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ alignment.hit_def }}</td>
-                <td>{{ br.query }}</td>
-                <td>{{ alignment.length }}</td>
-                <td>{{ alignment.best_evalue }}
-                <td><a href='#{{ alignment.get_id }}'>{{ alignment.best_score }}</a></td>
-                <td>{{ alignment.best_identities }}</td>
-                <!--<td>{{ alignment.hit_protein_name }}</td>-->
-
-            </tr>
-            {% endfor %}
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <br><br>
-    <h4><b>Alignments</b></h4>
-    <hr class="small">
-
-    {% for br in blast_records %}
-    {% for alignment in br.alignments %}
-    <!--<br>-->
-
-    <h4><p id="{{ alignment.get_id }}"><b>{{ alignment.hit_def }} length = {{ alignment.length }}</b></p></h4>
-
-    {% for hsp in alignment.hsp_list %}
-
-    <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-12 nbsite_sourcebox_outpadds">
-            <div class="nbsite_boxstyle_nonborder nbsite_sourcebox">
-                <table class="table table-hover table-condensed">
-                    <tbody>
-                    <tr>
-                        <th>hsp</th>
-                        <td>{{ forloop.counter }}</td>
-                    <tr>
-                    <tr>
-                        <th>length</th>
-                        <td>{{ hsp.align_length }}</td>
-                    <tr>
-                    <tr>
-                        <th>e-value</th>
-                        <td>{{ hsp.expect }}</td>
-                    <tr>
-                    <tr>
-                        <th>score</th>
-                        <td>{{ hsp.score }}</td>
-                    <tr>
-                    <tr>
-                        <th>identities</th>
-                        <td>{{ hsp.identities }}</td>
-                    <tr>
-                    <tr>
-                        <th>positives</th>
-                        <td>{{ hsp.positives }}</td>
-                    <tr>
-                    <tr>
-                        <th>bits</th>
-                        <td>{{ hsp.bits }}</td>
-                    <tr>
-                    <tr>
-                        <th>query start</th>
-                        <td>{{ hsp.query_start }}</td>
-                    <tr>
-                    <tr>
-                        <th>query end</th>
-                        <td>{{ hsp.query_end }}</td>
-                    <tr>
-                    <tr>
-                        <th>subject start</th>
-                        <td>{{ hsp.sbjct_start }}</td>
-                    <tr>
-                    <tr>
-                        <th>subject end</th>
-                        <td>{{ hsp.sbjct_end }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div>
+            <h4><b><u> {{ application }} {{ version }} </u></b></h4>
         </div>
 
-        <div class="col-lg-9 col-md-9 col-sm-12 nbsite_sourcebox_outpadds">
-            <div class="nbsite_boxstyle_nonborder nbsite_sourcebox">
+        <br>
+        <h4><b>Description</b></h4>
+
+
+        <div class="nbsite_boxstyle">
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>contig</th>
+                    <th>query</th>
+                    <th>length</th>
+                    <th>e-value</th>
+                    <th>score</th>
+                    <th>ident %</th>
+                    <!--<th>gene name / protein name</th>-->
+
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for br in blast_records %}
+                    {% for alignment in br.alignments %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ alignment.hit_def }}</td>
+                            <td>{{ br.query }}</td>
+                            <td>{{ alignment.length }}</td>
+                            <td>{{ alignment.best_evalue }}
+                            <td><a href='#{{ alignment.get_id }}'>{{ alignment.best_score }}</a></td>
+                            <td>{{ alignment.best_identities }}</td>
+                            <!--<td>{{ alignment.hit_protein_name }}</td>-->
+
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <br><br>
+        <h4><b>Alignments</b></h4>
+        <hr class="small">
+
+        {% for br in blast_records %}
+            {% for alignment in br.alignments %}
+                <!--<br>-->
+
+                <h4><p id="{{ alignment.get_id }}"><b>{{ alignment.hit_def }} length = {{ alignment.length }}</b></p></h4>
+
+                {% for hsp in alignment.hsp_list %}
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 nbsite_sourcebox_outpadds">
+                            <div class="nbsite_boxstyle_nonborder nbsite_sourcebox">
+                                <table class="table table-hover table-condensed">
+                                    <tbody>
+                                    <tr>
+                                        <th>hsp</th>
+                                        <td>{{ forloop.counter }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>length</th>
+                                        <td>{{ hsp.align_length }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>e-value</th>
+                                        <td>{{ hsp.expect }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>score</th>
+                                        <td>{{ hsp.score }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>identities</th>
+                                        <td>{{ hsp.identities }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>positives</th>
+                                        <td>{{ hsp.positives }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>bits</th>
+                                        <td>{{ hsp.bits }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>query start</th>
+                                        <td>{{ hsp.query_start }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>query end</th>
+                                        <td>{{ hsp.query_end }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>subject start</th>
+                                        <td>{{ hsp.sbjct_start }}</td>
+                                    <tr>
+                                    <tr>
+                                        <th>subject end</th>
+                                        <td>{{ hsp.sbjct_end }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-9 col-md-9 col-sm-12 nbsite_sourcebox_outpadds">
+                            <div class="nbsite_boxstyle_nonborder nbsite_sourcebox">
                 <pre>
                     {% for idx in hsp.chop_query %}
-    Q: {{ hsp.chop_query|get_at_index:forloop.counter0 }}
-    M: {{ hsp.chop_match|get_at_index:forloop.counter0 }}
-    S: {{ hsp.chop_sbjct|get_at_index:forloop.counter0 }}
-                        {% endfor %}
+                        Q: {{ hsp.chop_query|get_at_index:forloop.counter0 }}
+                        M: {{ hsp.chop_match|get_at_index:forloop.counter0 }}
+                        S: {{ hsp.chop_sbjct|get_at_index:forloop.counter0 }}
+                    {% endfor %}
                 </pre>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-    {% endfor %}
-    {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
 
-</div>
-{% endif %}
+        </div>
+    {% endif %}
 <!--</div>-->
 </body>
 
