@@ -135,10 +135,10 @@ def validate_word_size(word_size, BLAST_SETS):
     return int_word_size
 
 
-def validate_sequence(sequence, sequence_is_as_nucleotide=True):
+def validate_sequence(sequence:str, sequence_is_as_nucleotide=True):
     """Validate sequence in blast/tblastn form.  """
 
-    tmp_seq = tempfile.NamedTemporaryFile(delete=False)
+    tmp_seq = tempfile.NamedTemporaryFile(mode="w+",delete=False)
 
     if len(str(sequence).strip()) == 0:
         raise forms.ValidationError(blast_settings.BLAST_CORRECT_SEQ_ERROR_MSG)

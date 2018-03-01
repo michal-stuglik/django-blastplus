@@ -86,7 +86,7 @@ class Hsp(object):
     def get_set_key(self, prefix, value_to_set):
         key = ""
         while True:
-            key = prefix + str(uuid.uuid4().get_hex().upper())
+            key = prefix + str(uuid.uuid4().hex.upper())
             if cache.has_key(key):
                 continue
             cache.set(key, value_to_set)

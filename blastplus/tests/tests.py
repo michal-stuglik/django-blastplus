@@ -11,7 +11,7 @@ from blastplus.settings import SAMPLE_DIR
 
 class UtilsTestCase(TestCase):
     def setUp(self):
-        self.fastfile = tempfile.NamedTemporaryFile(delete=False)
+        self.fastfile = tempfile.NamedTemporaryFile(mode="w+", delete=False)
 
         self.fastfile.write(">seq1\n")
         self.fastfile.write("AAACCCGGG\n")
