@@ -67,7 +67,7 @@ class Hsp(object):
             ]
 
             for h in hsp_list:
-                for k, v in h.iteritems():
+                for k, v in h.items():
                     hsp_string += "{}\t{}\n".format(k, v)
         except:
             pass
@@ -83,15 +83,11 @@ class Hsp(object):
     def get_subject_key_from_cache(self):
         return self.get_set_key("subject_", self.sbjct)
 
-    def get_set_key(self, prefix, value_to_set):
-        key = ""
-        while True:
-            key = prefix + str(uuid.uuid4().hex.upper())
-            if cache.has_key(key):
-                continue
-            cache.set(key, value_to_set)
-            break
-        return key
+    @staticmethod
+    def get_set_key(prefix, value_to_set):
+        k = prefix + str(uuid.uuid4().hex.upper())
+        cache.get_or_set(k, value_to_set, None)
+        return k
 
 
 class Alignment(object):
