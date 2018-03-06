@@ -1,8 +1,0 @@
-django >= 2.0
-biopython
-
-# testing apps
-nose
-django-nose
-coverage
-django-webtest
