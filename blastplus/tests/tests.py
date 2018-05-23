@@ -1,16 +1,17 @@
+import os
+import tempfile
+
+from Bio.Blast import NCBIXML
 from django.test import TestCase
 
-import tempfile
-import os
 from blastplus import utils
-from blastplus.settings import SAMPLE_DIR
-from Bio.Blast import NCBIXML
 from blastplus.features import record
+from blastplus.settings import SAMPLE_DIR
 
 
 class UtilsTestCase(TestCase):
     def setUp(self):
-        self.fastfile = tempfile.NamedTemporaryFile(delete=False)
+        self.fastfile = tempfile.NamedTemporaryFile(mode="w+", delete=False)
 
         self.fastfile.write(">seq1\n")
         self.fastfile.write("AAACCCGGG\n")

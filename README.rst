@@ -1,4 +1,3 @@
-
 django-blastplus
 ================
 
@@ -9,8 +8,8 @@ Requirements
 ------------
 
 1. Blast+
-2. Python 2.7
-3. Django 1.10
+2. Python 3
+3. Django 2.0
 
 ::
 
@@ -27,21 +26,21 @@ Download
 --------
 
 .. image:: https://landscape.io/github/michal-stuglik/django-blastplus/master/landscape.svg?style=flat
-   :target: https://landscape.io/github/michal-stuglik/django-blastplus/master
+    :target: https://landscape.io/github/michal-stuglik/django-blastplus/master
    :alt: Code Health
-   
+
 .. image:: https://badge.fury.io/py/django-blastplus.svg
     :target: http://badge.fury.io/py/django-blastplus
 
 .. image:: https://travis-ci.org/michal-stuglik/django-blastplus.svg?branch=master
     :target: https://travis-ci.org/michal-stuglik/django-blastplus
     :alt: Travis CI
-    
+
 .. image:: https://codeclimate.com/github/michal-stuglik/django-blastplus/badges/gpa.svg
-   :target: https://codeclimate.com/github/michal-stuglik/django-blastplus
+    :target: https://codeclimate.com/github/michal-stuglik/django-blastplus
    :alt: Code Climate
 
-Get the latest version of django-blastplus from
+    Get the latest version of django-blastplus from
 https://pypi.python.org/pypi/django-blastplus/
 
 
@@ -81,7 +80,7 @@ Quick start
 
 ::
 
-        BLAST_DB_NUCL_LIST = [
+BLAST_DB_NUCL_LIST = [
             {
                 "name": "sample1",
                 "path": 'blastplus/sampledata/sample_db1/sample_db',

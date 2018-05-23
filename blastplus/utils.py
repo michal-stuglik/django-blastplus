@@ -1,7 +1,8 @@
 """Module with utility functions for blastplus app.   """
 
-import tempfile
 import os
+import tempfile
+
 from Bio.Application import ApplicationError
 
 from blastplus.features.record import Alignment, BlastRecord, Hsp
@@ -71,7 +72,7 @@ def run_blast_commands(ncbicommandline_method, **keywords):
     """Runs blastplus/tblastn search, collects result and pass as a xml temporary file.  """
 
     # temporary files for output
-    blast_out_tmp = tempfile.NamedTemporaryFile(delete=False)
+    blast_out_tmp = tempfile.NamedTemporaryFile(mode="w+",delete=False)
     keywords['out'] = blast_out_tmp.name
 
     # unpack query temp file object

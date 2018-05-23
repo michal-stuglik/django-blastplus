@@ -10,15 +10,15 @@
 
     {% block stylesheets %}
 
-    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'blastplus/style.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'blastplus/style.css' %}" type="text/css"/>
 
     {% endblock %}
 
     {% block javascript %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{% static 'bootstrap/bootstrap.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="{% static 'bootstrap/bootstrap.js' %}"></script>
 
     {% endblock %}
 
@@ -54,21 +54,21 @@
 
             <div>
                 {% if form.errors %}
-                <div class="alert alert-danger" role="alert">
-                    Please correct errors: {{form.errors}}
-                </div>
+                    <div class="alert alert-danger" role="alert">
+                        Please correct errors: {{ form.errors }}
+                    </div>
                 {% endif %}
                 <form action="" method="post" size="100">
                     {% csrf_token %}
-                    <p>{{form.sequence_in_form}}</p>
-                    <p><strong>Database:</strong> {{form.blast_db_in_form}}</p>
-                    <p><strong>E-value:</strong> {{form.evalue_in_form}}</p>
+                    <p>{{ form.sequence_in_form }}</p>
+                    <p><strong>Database:</strong> {{ form.blast_db_in_form }}</p>
+                    <p><strong>E-value:</strong> {{ form.evalue_in_form }}</p>
                     {% if form.matrix_in_form %}
-                        <p><strong>Matrix:</strong> {{form.matrix_in_form}}</p>
+                        <p><strong>Matrix:</strong> {{ form.matrix_in_form }}</p>
                         <!--<p><strong>{{form.matrix_in_form.label}}</strong> {{form.matrix_in_form}}</p>-->
                     {% endif %}
-                    <p><strong>Word size:</strong> {{form.word_size_in_form}}</p>
-                    <p><strong>Sensitivity:</strong> {{form.search_sensitivity_in_form}}</p>
+                    <p><strong>Word size:</strong> {{ form.word_size_in_form }}</p>
+                    <p><strong>Sensitivity:</strong> {{ form.search_sensitivity_in_form }}</p>
                     <input type="submit" value="Search">
                 </form>
             </div>

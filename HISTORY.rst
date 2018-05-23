@@ -4,6 +4,12 @@ History
 =======
 
 
+2.0
+====
+
+* upgrade to Django 2.0 and python3
+
+
 0.4
 ====
 

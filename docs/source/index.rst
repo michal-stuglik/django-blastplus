@@ -1,4 +1,3 @@
-
 django-blastplus's docs!
 ====================
 
@@ -17,10 +16,10 @@ xxxxxxx
 Contents:
 
 .. toctree::
-   :maxdepth: 3
-   
-   
-   license
+:maxdepth: 3
+
+
+       license
 
 
 Indices and tables
