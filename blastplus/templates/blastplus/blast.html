@@ -41,7 +41,7 @@
                     $('#loadSampleData').on('click', function () {
                         var $btn = $(this).button('loading');
 
-                        id_sequence_in_form.value = '{{ sequence_sample_in_fasta|escapejs }}';
+                        $("#id_sequence_in_form").val('{{ sequence_sample_in_fasta|escapejs }}');
 
                         $btn.button('reset');
                     });

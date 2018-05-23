@@ -145,9 +145,9 @@ def validate_sequence(sequence, sequence_is_as_nucleotide=True):
         raise forms.ValidationError(blast_settings.BLAST_CORRECT_SEQ_ERROR_MSG)
 
     if str(sequence).strip()[0] != ">":
-        tmp_seq.write(">seq1\n")
+        tmp_seq.write(">seq1\n".encode())
 
-    tmp_seq.write(sequence)
+    tmp_seq.write(sequence.encode())
     tmp_seq.close()
 
     records = SeqIO.index(tmp_seq.name, "fasta")
