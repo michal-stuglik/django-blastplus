@@ -11,4 +11,4 @@ init:
 
 test:
 	@echo 'Run all tests'
-	pipenv run manage.py test
+	pipenv run python manage.py test
