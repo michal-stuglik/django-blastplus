@@ -7,15 +7,17 @@ name = "pypi"
 
 [packages]
 
-Django = ">=2.0"
+django = ">=2.0"
 biopython = "*"
+
+
+[dev-packages]
+
+twine = "*"
 nose = "*"
 django-nose = "*"
 coverage = "*"
 django-webtest = "*"
-
-
-[dev-packages]
 
 
 
