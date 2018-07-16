@@ -2,8 +2,8 @@ import os
 
 from setuptools import setup
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
-    README = readme.read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -15,7 +15,8 @@ setup(
     include_package_data=True,
     license='MIT License',
     description='A simple Django app to conduct web-based blast+ local alignment search.',
-    long_description=README,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/michal-stuglik/django-blastplus',
     author='Michal Stuglik',
     author_email='stuglik@gmail.com',
