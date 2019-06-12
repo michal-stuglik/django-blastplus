@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-blastplus',
-    version='2.0.4',
+    version='2.0.5',
     packages=['blastplus'],
     include_package_data=True,
     license='MIT License',

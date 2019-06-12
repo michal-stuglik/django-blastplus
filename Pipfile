@@ -8,8 +8,8 @@ name = "pypi"
 [packages]
 
 django = ">=2.1.2"
-biopython = "*"
-
+biopython = "==1.73"
+urllib3 = ">=1.25.3"
 
 [dev-packages]
 
