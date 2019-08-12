@@ -1,7 +1,12 @@
 language: python
 python:
   - "3.6"
+
 install:
-  - make init
+  - pip install pipenv
+  - pipenv install
+  - pipenv install --dev
+
 script:
+  - make init
   - make test
