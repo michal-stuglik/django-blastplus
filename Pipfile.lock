@@ -172,11 +172,11 @@
         },
         "waitress": {
             "hashes": [
-                "sha256:3776cbb9abebefb51e5b654f8728928aa17b656d9f6943c58ce8f48e87cef4e3",
-                "sha256:f4118cbce75985fd60aeb4f0d781aba8dc7ae28c18e50753e913d7a7dee76b62"
+                "sha256:67a60a376f0eb335ed88967c42b73983a58d66a2a72eb9009a42725f7453b142",
+                "sha256:cbf1c62fc41393a6f27cb78483f8f6e252630a3598984668244b7bf4e35856f1"
             ],
             "index": "pypi",
-            "version": "==1.4.1"
+            "version": "==1.4.2"
         },
         "webob": {
             "hashes": [
@@ -353,10 +353,10 @@
         },
         "tqdm": {
             "hashes": [
-                "sha256:166a82cdea964ae45528e0cc89436255ff2be73dc848bdf239f13c501cae5dc7",
-                "sha256:9036904496bd2afacf836a6f206c5a766ce11d3e9319d54a4e794c0f34b111dc"
+                "sha256:4789ccbb6fc122b5a6a85d512e4e41fc5acad77216533a6f2b8ce51e0f265c23",
+                "sha256:efab950cf7cc1e4d8ee50b2bb9c8e4a89f8307b49e0b2c9cfef3ec4ca26655eb"
             ],
-            "version": "==4.41.0"
+            "version": "==4.41.1"
         },
         "twine": {
             "hashes": [
@@ -376,11 +376,11 @@
         },
         "waitress": {
             "hashes": [
-                "sha256:3776cbb9abebefb51e5b654f8728928aa17b656d9f6943c58ce8f48e87cef4e3",
-                "sha256:f4118cbce75985fd60aeb4f0d781aba8dc7ae28c18e50753e913d7a7dee76b62"
+                "sha256:67a60a376f0eb335ed88967c42b73983a58d66a2a72eb9009a42725f7453b142",
+                "sha256:cbf1c62fc41393a6f27cb78483f8f6e252630a3598984668244b7bf4e35856f1"
             ],
             "index": "pypi",
-            "version": "==1.4.1"
+            "version": "==1.4.2"
         },
         "webencodings": {
             "hashes": [
