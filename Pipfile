@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "==2.2.8"
+django = "==2.2.9"
 biopython = "==1.74"
 urllib3 = "==1.24.3"
 numpy = "==1.17.0"
