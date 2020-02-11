@@ -6,13 +6,13 @@ A simple Django app to conduct web-based homology search with blast+.
 #### Requirements
 
 1. Blast+
-2. Python 3
-3. Django 2.0
+2. Python 3.6+
+3. Django 3.0
 4. Biopython
 
 #### Install
 ```bash
-pipenv install
+pip install -r requirements/base.txt
 ```
 
 
@@ -26,17 +26,17 @@ pipenv install
 
 #### Quick start
 
-1. Add "blastplus" to your INSTALLED_APPS setting like this::
+##### Add "blastplus" to your INSTALLED_APPS setting like this::
 ```
 INSTALLED_APPS = (
         'blastplus',
 )
 ```
-2. Include the polls URLconf in your project urls.py like this::
+##### Include the polls URLconf in your project urls.py like this::
 ```
 url(r'^blast/', include('blastplus.urls')),
 ```
-3. You can modify some defaults in blastplus.settings
+##### You can modify some defaults in blastplus.settings
 
     - e.g. modify path to nucleotide database::
 
@@ -54,22 +54,18 @@ BLAST_DB_NUCL_LIST = [
                 "annotated": False, },
         ]
 ```
-4. Visit search pages:
+##### Visit search pages:
 
-- Blastn http://127.0.0.1:8000/blast/blastn
-
-- TBlastn http://127.0.0.1:8000/blast/tblastn
-
-- Blastp http://127.0.0.1:8000/blast/blastp
-
-- Blastx http://127.0.0.1:8000/blast/blastx
+- [Blastn](http://127.0.0.1:8000/blast/blastn), [TBlastn](http://127.0.0.1:8000/blast/tblastn), 
+[Blastp](http://127.0.0.1:8000/blast/blastp), [Blastx](http://127.0.0.1:8000/blast/blastx)
 
 
 Example
 -------
 
-See our NewtBase portal with django-blastplus app inside
+See our [NewtBase portal](http://newtbase.eko.uj.edu.pl/blast/blastn/) with django-blastplus app inside.
+Code [newtbase @ github](https://github.com/michal-stuglik/newtbase)
 
-http://newtbase.eko.uj.edu.pl/blast/blastn/
+
 
 

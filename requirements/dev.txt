@@ -1,0 +1,4 @@
+-r base.txt
+coverage==4.5.4
+django-webtest==1.9.7
+django-nose==1.4.6

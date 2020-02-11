@@ -11,3 +11,4 @@ htmlcov
 .idea/
 /.venv/
 /build/
+/.vscode/
