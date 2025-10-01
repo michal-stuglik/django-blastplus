@@ -1,2 +1,2 @@
-django==4.2.22
+django==4.2.25
 biopython==1.76
